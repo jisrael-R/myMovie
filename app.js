@@ -87,9 +87,6 @@ const displayBtns = () => {
 };
 displayBtns();
 
-const k = process.env.API_key;
-console.log(k);
-
 // const allMovies = get('.container-two');
 
 // genre filter btns
