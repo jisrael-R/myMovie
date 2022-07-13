@@ -244,9 +244,6 @@ async function getModal(getId) {
         }
     });
 
-    // const modalElement = get('.movie-info-container');
-    // modalElement.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${single.backdrop_path})`;
-
     const modalInfo = `  <div class="overview-container">
                
                 <img src="https://image.tmdb.org/t/p/w500${
@@ -303,8 +300,7 @@ async function getModal(getId) {
         })
         .join('');
     const movReviews = reviews.results;
-    // (modal.style.background = `no-repeat url(https://image.tmdb.org/t/p/original${single.backdrop_path})`),
-    //     (modal.style.backgroundColor = `rgba(34, 34, 34, 0.781)`);
+
     modal.innerHTML = modalInfo;
 
     relatedMovs.innerHTML = movsRelated;

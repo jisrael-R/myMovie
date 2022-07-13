@@ -91,126 +91,6 @@ const allGenres = [
         },
     },
 ];
-// async function genreListDisplay() {
-//     let endpoints = [
-//         allGenres[0].action.url,
-//         allGenres[0].adventure.url,
-//         allGenres[0].animation.url,
-//         allGenres[0].comedy.url,
-//         allGenres[0].crime.url,
-//         allGenres[0].documentary.url,
-//         allGenres[0].drama.url,
-//         allGenres[0].family.url,
-//         allGenres[0].history.url,
-//         allGenres[0].horror.url,
-//         allGenres[0].music.url,
-//         allGenres[0].mystery.url,
-//         allGenres[0].romance.url,
-//         allGenres[0].scifi.url,
-//         allGenres[0].thriller.url,
-//         allGenres[0].tvMovie.url,
-//         allGenres[0].war.url,
-//         allGenres[0].western.url,
-//     ];
-//     axios
-//         .all(endpoints.map((item) => axios.get(item)))
-//         // .then((data) => console.log(data[0].data.results));
-//         .then((data) => {
-//             const movImages = `https://image.tmdb.org/t/p/original`;
-//             const placeHolder = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIg60j4m6mAJW12mkD9B8O8j3bw7z6QdyOOA&usqp=CAU`;
-//             const actionContainer = get('.action');
-//             const actionPost = data[0].data.results;
-//             const adventure = data[1].data.results;
-//             // g(actionPost);
-//             const action = actionPost
-//                 .map((item) => {
-//                     const imagesLink = `${item.poster_path}`;
-//                     if (item.poster_path) {
-//                         return `<article class="img-post">
-//                         <img class="img-item"  src="${movImages}${imagesLink}"
-//                             alt="">
-//                         <div class="btn-title">
-//                            <button data-id="${item.id}" class="btn-mov">${
-//                             item.title
-//                         }</button>
-//                            <div class="title">
-//                             <span class="span">${moment(
-//                                 item.release_date
-//                             ).format('MMM Do YY')}</span>
-//                         </div>
-//                            </div>
-
-//                     </article>`;
-//                     } else {
-//                         return `<article class="img-post">
-//                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-//                             alt="">
-//                         <div class="btn-title">
-//                            <button data-id="${item.id}" class="btn-mov">${
-//                             item.title
-//                         }</button>
-//                            <div class="title">
-//                             <span class="span">${moment(
-//                                 item.release_date
-//                             ).format('MMM Do YY')}</span>
-//                         </div>
-//                            </div>
-
-//                     </article>`;
-//                     }
-//                 })
-//                 .join('');
-//             actionContainer.innerHTML = action;
-//         });
-// }
-// genreListDisplay();
-
-// function g(items) {
-//     const movImages = `https://image.tmdb.org/t/p/original`;
-//     const placeHolder = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIg60j4m6mAJW12mkD9B8O8j3bw7z6QdyOOA&usqp=CAU`;
-//     const actionContainer = get('.action');
-//     const element = items
-//         .map((item) => {
-//             const imagesLink = `${item.poster_path}`;
-//             if (item.poster_path) {
-//                 return `<article class="img-post">
-//                     <img class="img-item"  src="${movImages}${imagesLink}"
-//                         alt="">
-//                     <div class="btn-title">
-//                        <button data-id="${item.id}" class="btn-mov">${
-//                     item.title
-//                 }</button>
-//                        <div class="title">
-//                         <span class="span">${moment(item.release_date).format(
-//                             'MMM Do YY'
-//                         )}</span>
-//                     </div>
-//                        </div>
-
-//                 </article>`;
-//             } else {
-//                 return `<article class="img-post">
-//                     <img class="img-item" style="height:213px;" src="${placeHolder}"
-//                         alt="">
-//                     <div class="btn-title">
-//                        <button data-id="${item.id}" class="btn-mov">${
-//                     item.title
-//                 }</button>
-//                        <div class="title">
-//                         <span class="span">${moment(item.release_date).format(
-//                             'MMM Do YY'
-//                         )}</span>
-//                     </div>
-//                        </div>
-
-//                 </article>`;
-//             }
-//         })
-//         .join('');
-//     if (element) {
-//         actionContainer.innerHTML = element;
-//     }
-// }
 
 async function genreListDisplay() {
     let endpoints = [
@@ -237,9 +117,6 @@ async function genreListDisplay() {
         .all(endpoints.map((item) => axios.get(item)))
         // .then((data) => console.log(data[0].data.results));
         .then((data) => {
-            const movImages = `https://image.tmdb.org/t/p/original`;
-            const placeHolder = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIg60j4m6mAJW12mkD9B8O8j3bw7z6QdyOOA&usqp=CAU`;
-
             const actionPost = data[0].data.results;
             const adventurePost = data[1].data.results;
             const animationPost = data[2].data.results;
