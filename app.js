@@ -220,9 +220,12 @@ async function getModal(getId) {
     const video = await (await fetch(trailer)).json();
     console.log(single);
 
-    const newArray = video.results.find(
-        (item) => item.name === 'Official Trailer'
-    );
+    const newArray = video.results
+        .map((video) => {
+            return `<iframe width="250" height="190" src="https://www.youtube.com/embed/${video.key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        })
+        .join('');
+    console.log(newArray);
     console.log(single);
     const genreContain = get('.genre-list');
     const genreList = single.genres
@@ -240,11 +243,15 @@ async function getModal(getId) {
             return vid;
         }
     });
+
+    // const modalElement = get('.movie-info-container');
+    // modalElement.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${single.backdrop_path})`;
+
     const modalInfo = `  <div class="overview-container">
                
                 <img src="https://image.tmdb.org/t/p/w500${
                     single.poster_path
-                }" width="240px" alt="">
+                }" width="320px"  alt="">
 
                 <div class="content-info">
                     <div class="name-title">
@@ -265,10 +272,9 @@ async function getModal(getId) {
                     <div class="overview-content">
                         <p>${single.overview}</p>
                     
+                        <h1>related trailers</h1>
                         <div class="video">
-                        <iframe width="360" height="215" src="https://www.youtube.com/embed/${
-                            modalContent[0].key
-                        }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        ${newArray}
                         
                          </div>
                     </div
