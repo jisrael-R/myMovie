@@ -266,7 +266,7 @@ async function genreListDisplay() {
                 const horrorContainer = get('.horror');
                 const musicContainer = get('.family');
                 const mysteryContainer = get('.mystery');
-                const movImages = `https://image.tmdb.org/t/p/original`;
+                const movImages = `https://image.tmdb.org/t/p/w500`;
                 const placeHolder = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIg60j4m6mAJW12mkD9B8O8j3bw7z6QdyOOA&usqp=CAU`;
                 const action = actionPost
                     .map((item) => {

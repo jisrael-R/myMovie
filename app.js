@@ -137,7 +137,7 @@ async function getMovies(url) {
         .map((movie) => {
             // console.log(movie);
             const imagesLink = `${movie.poster_path}`;
-            const movImages = `https://image.tmdb.org/t/p/original`;
+            const movImages = `https://image.tmdb.org/t/p/w500`;
             const placeHolder = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIg60j4m6mAJW12mkD9B8O8j3bw7z6QdyOOA&usqp=CAU`;
 
             if (movie.poster_path) {
@@ -242,7 +242,7 @@ async function getModal(getId) {
     });
     const modalInfo = `  <div class="overview-container">
                
-                <img src="https://image.tmdb.org/t/p/original${
+                <img src="https://image.tmdb.org/t/p/w500${
                     single.poster_path
                 }" width="240px" alt="">
 
@@ -289,7 +289,7 @@ async function getModal(getId) {
             return `
                  <div class="article">
                    <article>
-                       <img src="https://image.tmdb.org/t/p/original${mov.poster_path}"  alt="">
+                       <img src="https://image.tmdb.org/t/p/w500${mov.poster_path}"  alt="">
                        <h5>${mov.title}</h5>
                     </article>
                     </div>
