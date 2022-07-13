@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <!-- special font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <!-- google icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <title>Movies Blog</title>
+</head>
+
+<body>
+    <!-- <div id="player"></div> -->
+    <div class="container">
+        <!-- navbar -->
+        <nav class="">
+            <div class="navbar-container">
+                <div class="logo">
+                    <p>myMovies</p>
+                    <div class="dot-logo">
+                        <div class="r-logo red"></div>
+                        <div class="r-logo orange"></div>
+                        <div class="r-logo yellow"></div>
+                        <div class="r-logo violet"></div>
+                        <div class="r-logo blue"></div>
+                        <div class="r-logo green"></div>
+                    </div>
+                </div>
+                <div class="search">
+                    <div class="zoom"><span class="material-symbols-outlined">search</span></div>
+                    <input id="searchBox" type="text" class="fontAwesome" name="search" placeholder="Search:">
+                </div>
+
+                <div class="select-container">
+                    <ul>
+                        <li data-value="now_playing">now playing</li>
+                        <li data-value="popular">popular</li>
+                        <li data-value="top_rated">top rated</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- image carrousel -->
+        <main>
+            <div class="slider-container">
+                <div class="slide fade" id="1">
+                    <img src="https://image.tmdb.org/t/p/original/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg" class="slide-img"
+                        alt="" />
+                    <div class="overlay">
+                        <h2 class="fade">doctor strange</h2>
+                        <div class="texto">
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit tempora earum veritatis
+                                deserunt a culpa fugiat repellat dolorum quo eveniet esse, debitis qui at. Beatae sint
+                                est voluptatem numquam necessitatibus?</p>
+                            <div class="btn-slide">
+                                <button>watch trailer</button>
+                                <button>see more</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide fade" id="2">
+                    <img src="https://image.tmdb.org/t/p/original/t0mwKhUDa62hdhdKSsN4xMfhY5Z.jpg" class="slide-img"
+                        alt="" />
+                    <div class="overlay">
+                        <h2 class="fade">dog</h2>
+                        <div class="texto">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet rerum dolorem, dolore,
+                                vitae fuga ea odio eligendi impedit, aut nostrum ducimus alias molestiae quas possimus
+                                ab a animi voluptatem exercitationem?</p>
+                            <div class="btn-slide">
+                                <button>watch trailer</button>
+                                <button>see more</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="slide fade">
+                    <img src="https://image.tmdb.org/t/p/original/qBu6blwnOA75Hz61QHrNe8unUNw.jpg" class="slide-img"
+                        alt="" />
+                    <div class="overlay">
+                        <h2 class="fade">collision</h2>
+                        <div class="texto">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores laboriosam fugiat
+                                nam, quas accusamus quasi placeat similique quo! Recusandae necessitatibus veritatis
+                                culpa, voluptatum cumque consequatur id ullam iusto eveniet eos.</p>
+                            <div class="btn-slide">
+                                <button>watch trailer</button>
+                                <button>see more</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="slide fade">
+                    <img src="https://image.tmdb.org/t/p/original/gG9fTyDL03fiKnOpf2tr01sncnt.jpg" class="slide-img"
+                        alt="" />
+                    <div class="overlay">
+                        <h2 class="fade">morbious</h2>
+                        <div class="texto">
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi provident,
+                                accusantium minima ratione sapiente autem mollitia sint reprehenderit, natus distinctio
+                                porro? Ex iusto voluptatibus quos odit quia cumque assumenda sapiente?</p>
+                            <div class="btn-slide">
+                                <button>watch trailer</button>
+                                <button>see more</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="slide fade">
+                    <img src="https://image.tmdb.org/t/p/original/wo3l9p0S7pcvwlzlndtKgq0peRJ.jpg" class="slide-img"
+                        alt="" />
+                    <div class="overlay">
+                        <h2 class="fade">Jurassic World Dominion</h2>
+                        <div class="texto">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi nam libero voluptate
+                                omnis, ad magni aperiam cumque exercitationem saepe earum veritatis dolores in
+                                perferendis aliquid nostrum quisquam accusantium quaerat? Illo?</p>
+                            <div class="btn-slide">
+                                <button>watch trailer</button>
+                                <button>see more</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="slide-dots hide" style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
+            <!-- movies -->
+            <section class="section-container">
+
+
+                <div class="selection-contain">
+
+                    <div class="search-title">
+                        <!-- <h5>Searching by: "Now Playing"</h5> -->
+
+                    </div>
+
+                    <div class="selection-container">
+
+                        <!-- movie filter -->
+                        <div class="filter-container hide">
+                            <div class="title">
+                                <p> <i class="fas fa-filter"></i> filter by</p>
+                            </div>
+                            <div class="btn-container">
+                                <div class="mock-title-btn gradient"></div>
+                                <div class="mock-title-btn gradient"></div>
+                                <div class="mock-title-btn gradient"></div>
+                                <div class="mock-title-tbn gradient"></div>
+                                <div class="mock-title-btn gradient"></div>
+                                <div class="mock-title-btn gradient"></div>
+                                <div class="mock-title-tbn gradient"></div>
+                                <div class="mock-title-tbn gradient"></div>
+                            </div>
+                            <button id="see-btn">see more <i class="fas fa-chevron-down"></i></button>
+                        </div>
+
+
+                        <!-- movies container -->
+                        <div class="genre-container">
+                            <div class="shadow">
+                                <h1 style="color: white;">top picks</h1>
+                                <div class="movies-container add_trasition ">
+                                    <a href="#one"></a>
+
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="action2 grn">
+                                <h1 style="color: white;">action</h1>
+                                <div class="genre-movie-container action add_trasition cont-2">
+                                    <a href="#one"></a>
+
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+
+                                    <!-- end of this -->
+                                </div>
+                            </div>
+                            <div class="adventure2 grn">
+                                <h1 style="color: white;">adventure</h1>
+                                <div class="adventure genre-movie-container add_trasition cont-2">
+                                    <a href="#one"></a>
+
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+
+                                    <!-- end of this -->
+                                </div>
+
+                            </div>
+                            <div class="animation2 grn">
+                                <h1 style="color: white;">animation</h1>
+                                <div class=" animation genre-movie-container add_trasition cont-2">
+                                    <a href="#one"></a>
+
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+
+                                    <!-- end of this -->
+                                </div>
+
+
+                            </div>
+                            <div class="comedy2 grn">
+                                <h1 style="color: white;">comedy</h1>
+                                <div class=" comedy genre-movie-container add_trasition cont-2">
+                                    <a href="#one"></a>
+
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+
+                                    <!-- end of this -->
+                                </div>
+
+
+                            </div>
+                            <div class="crime2 grn">
+                                <h1 style="color: white;">crime</h1>
+                                <div class=" crime genre-movie-container add_trasition cont-2">
+                                    <a href="#one"></a>
+
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+                                    <div class="mock-cont">
+                                        <div class="mock gradient"></div>
+                                        <div class="mock-title gradient"></div>
+                                    </div>
+
+
+                                </div>
+                                <div class="documentary2 grn">
+                                    <h1 style="color: white;">documentary</h1>
+                                    <div class=" documentary genre-movie-container add_trasition cont-2">
+                                        <a href="#one"></a>
+
+                                        <div class="mock-cont">
+                                            <div class="mock gradient"></div>
+                                            <div class="mock-title gradient"></div>
+                                        </div>
+                                        <div class="mock-cont">
+                                            <div class="mock gradient"></div>
+                                            <div class="mock-title gradient"></div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="drama2 grn">
+                                        <h1 style="color: white;">drama</h1>
+                                        <div class=" drama genre-movie-container add_trasition cont-2">
+                                            <a href="#one"></a>
+
+                                            <div class="mock-cont">
+                                                <div class="mock gradient"></div>
+                                                <div class="mock-title gradient"></div>
+                                            </div>
+                                            <div class="mock-cont">
+                                                <div class="mock gradient"></div>
+                                                <div class="mock-title gradient"></div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="family2 grn">
+                                            <h1 style="color: white;">family</h1>
+                                            <div class=" family genre-movie-container add_trasition cont-2">
+                                                <a href="#one"></a>
+
+                                                <div class="mock-cont">
+                                                    <div class="mock gradient"></div>
+                                                    <div class="mock-title gradient"></div>
+                                                </div>
+                                                <div class="mock-cont">
+                                                    <div class="mock gradient"></div>
+                                                    <div class="mock-title gradient"></div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="history2 grn">
+                                                <h1 style="color: white;">history</h1>
+                                                <div class=" history genre-movie-container add_trasition cont-2">
+                                                    <a href="#one"></a>
+
+                                                    <div class="mock-cont">
+                                                        <div class="mock gradient"></div>
+                                                        <div class="mock-title gradient"></div>
+                                                    </div>
+                                                    <div class="mock-cont">
+                                                        <div class="mock gradient"></div>
+                                                        <div class="mock-title gradient"></div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="horror2 grn">
+                                                <h1 style="color: white;">horror</h1>
+                                                <div class=" horror genre-movie-container add_trasition cont-2">
+                                                    <a href="#one"></a>
+
+                                                    <div class="mock-cont">
+                                                        <div class="mock gradient"></div>
+                                                        <div class="mock-title gradient"></div>
+                                                    </div>
+                                                    <div class="mock-cont">
+                                                        <div class="mock gradient"></div>
+                                                        <div class="mock-title gradient"></div>
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+                                            <div class="music">
+
+                                            </div>
+                                            <div class="mystery">
+
+                                            </div>
+                                            <div class="romance">
+
+                                            </div>
+                                            <div class="scifi">
+
+                                            </div>
+                                            <div class="tvmovie">
+
+                                            </div>
+                                            <div class="thriller">
+
+                                            </div>
+                                            <div class="war">
+
+                                            </div>
+                                            <div class="western">
+
+                                            </div>
+
+
+                                        </div>
+            </section>
+
+
+
+
+
+        </main>
+
+        <footer>
+            <h3>MyMovies</h3>
+            <p>made by jorman israel</p>
+        </footer>
+    </div>
+    <div class="modal-overlay">
+
+        <div class="modal-container">
+            <div id="player"></div>
+            <div class="genre-list"></div>
+
+            <div class="movie-info-container">
+
+                <button class="close-btn btn2">
+                    <i class="fas fa-times"></i>
+
+
+                    <!-- here goes img poster, movie name title and overview -->
+            </div>
+            <div class="movie-reviews-related">
+
+
+                <div class="related-title">
+                    <div class="re-title">
+                        <h2>Related Movies</h2>
+                        <i class="fas fa-angle-down btn-related-movies"></i>
+
+                    </div>
+
+
+                    <div class="related-movie-container">
+                        <div class="mock-cont">
+                            <div class="mock gradient"></div>
+                            <div class="mock-title gradient"></div>
+                        </div>
+                        <div class="mock-cont">
+                            <div class="mock gradient"></div>
+                            <div class="mock-title gradient"></div>
+                        </div>
+                        <div class="mock-cont">
+                            <div class="mock gradient"></div>
+                            <div class="mock-title gradient"></div>
+                        </div>
+                        <div class="mock-cont">
+                            <div class="mock gradient"></div>
+                            <div class="mock-title gradient"></div>
+                        </div>
+                        <div class="mock-cont">
+                            <div class="mock gradient"></div>
+                            <div class="mock-title gradient"></div>
+                        </div>
+                        <div class="mock-cont">
+                            <div class="mock gradient"></div>
+                            <div class="mock-title gradient"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- <div class="related-movie-container"></div> -->
+                <div class="users-reviews related-title">
+                    <div class="re-title">
+                        <h2>Movies</h2>
+                        <i class="fas fa-angle-down btn-related-movies"></i>
+                    </div>
+
+                    <div class="article">
+                        <article>
+                            <div class="user-img">
+                                <img src="" alt="">
+                            </div>
+                            <div class="message-container">
+                                <p></p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <!-- here goes accordion with a tab for related movies and reviews on the current selected movie. -->
+        </div>
+    </div>
+
+    </div>
+
+    <!-- <script src="./utils/youtube.js"></script> -->
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+    <script src="./utils/carousel.js"></script>
+    <script type="module" src="./utils/genres.js"></script>
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>
