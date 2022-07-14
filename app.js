@@ -200,6 +200,43 @@ async function getMovies(url) {
         })
         .join('');
     // console.log(movies);
+    const mobileMovieContainer = get('.mobile-movies-list');
+    const mobileMovies = data.results
+        .map((mobile) => {
+            const imagesLink = `${mobile.poster_path}`;
+            const movImages = `https://image.tmdb.org/t/p/w500`;
+            const placeHolder = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIg60j4m6mAJW12mkD9B8O8j3bw7z6QdyOOA&usqp=CAU`;
+
+            return `<div class="movie-card">
+                            <div class="imgPoster">
+                                <img src="${movImages}${imagesLink}"
+                                     alt="${mobile.title}" />
+                            </div>
+                            <div class="card-title">
+                                <h3>${mobile.title}</h3>
+                                <p>${mobile.overview}</p>
+                            </div>
+                        </div>`;
+        })
+        .join('');
+
+    if (mobileMovies == 0) {
+        mobileMovieContainer.innerHTML = ` <div class="logo" style="color:white; padding-right:2em; border-right: 1px solid violet">
+                    <p>myMovies</p>
+                    <div class="dot-logo">
+                        <div class="r-logo red"></div>
+                        <div class="r-logo orange"></div>
+                        <div class="r-logo yellow"></div>
+                        <div class="r-logo violet"></div>
+                        <div class="r-logo blue"></div>
+                        <div class="r-logo green"></div>
+                    </div>
+                </div>
+                <div class="notFound-mobile"><h1>"No Movies found"</h1> <p>Try Another Title</p></div>
+        `;
+    } else {
+        mobileMovieContainer.innerHTML = mobileMovies;
+    }
 
     if (movies < 1) {
         movieContainer.innerHTML = `
@@ -423,6 +460,7 @@ navBtnCont.addEventListener('click', (e) => {
     const el = e.target;
     const ele = e.target.dataset.value;
     const close = e.target.nodeName === 'SPAN';
+
     if (close) {
         navBtnCont.classList.add('hide-element');
     }
@@ -431,11 +469,18 @@ navBtnCont.addEventListener('click', (e) => {
 
     if (queries) {
         let url = `https://api.themoviedb.org/3/movie/${queries}?api_key=856d768df6af9757eea4022493c242c3`;
+        navBtnCont.classList.add('hide-element');
+        AllContainers.forEach((element) => {
+            element.classList.add('hide-element');
+        });
         return getMovies(url);
     }
     if (ele) {
         // filterContainer.classList.remove('hide');
-
+        AllContainers.forEach((element) => {
+            element.classList.remove('hide-element');
+        });
+        navBtnCont.classList.add('hide-element');
         return getMovies(ele);
     }
 });

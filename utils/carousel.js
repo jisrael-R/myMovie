@@ -34,13 +34,14 @@ function showSlides(n) {
     dots[slideIndex - 1].className += ' active';
 }
 
-const genreArr = ['drama', 'action', 'sci-fi', 'documentary', 'history'];
+const genreArr = ['drama', 'action', 'sci-fi', 'anime', 'history'];
 let i = 0;
 setInterval(function () {
     document
         .getElementById('searchBox')
-        .setAttribute('placeholder', `Search: ${genreArr[i++]}`);
+        .setAttribute('placeholder', `Search: "${genreArr[i++]}"`);
+
     if (i == genreArr.length) i = 0;
-}, 7000);
+}, 3000);
 
 // end of func
