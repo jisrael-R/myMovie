@@ -70,22 +70,42 @@ const displayBtns = () => {
 
     const buttons = ['browse_all', ...things.map((btn) => btn)];
     console.log(buttons);
-    navBtnCont.innerHTML = buttons
-        .map((btn) => {
-            let myval = btn.split('_').join(' ');
-            if (myval.includes('browse all')) {
-                return `
+    navBtnCont.innerHTML =
+        `<span class="close material-symbols-outlined">
+close
+</span>` +
+        buttons
+            .map((btn) => {
+                let myval = btn.split('_').join(' ');
+                if (myval.includes('browse all')) {
+                    return `
               
                 <button id='one' class='btn fade'data-value="${tt}">browse all</button>`;
-            } else if (myval) {
-                return `
+                } else if (myval) {
+                    return `
               
                 <button class='btn fade' data-id="${btn}">${myval}</button>`;
-            }
-        })
-        .join('');
+                }
+            })
+            .join('') +
+        `<div class="logo loggo" style="color:lightGrey; margin: 0 auto; margin-top:1.5em;">
+                    <p>myMovies</p>
+                    
+                    <div class="dot-logo">
+                        <div class="r-logo red"></div>
+                        <div class="r-logo orange"></div>
+                        <div class="r-logo yellow"></div>
+                        <div class="r-logo violet"></div>
+                        <div class="r-logo blue"></div>
+                        <div class="r-logo green"></div>
+                    </div>
+                </div>`;
 };
 displayBtns();
+const closeBtn = get('.btn-menu');
+closeBtn.addEventListener('click', () => {
+    navBtnCont.classList.remove('hide-element');
+});
 
 // const allMovies = get('.container-two');
 
@@ -402,12 +422,15 @@ navBtnCont.addEventListener('click', (e) => {
     navBtnCont.classList.toggle('focused');
     const el = e.target;
     const ele = e.target.dataset.value;
-    // const filterContainer = get('.filter-container');
-    // filterContainer.classList.add('hide');
+    const close = e.target.nodeName === 'SPAN';
+    if (close) {
+        navBtnCont.classList.add('hide-element');
+    }
+
     const queries = el.dataset.id;
-    console.log(el);
-    let url = `https://api.themoviedb.org/3/movie/${queries}?api_key=856d768df6af9757eea4022493c242c3`;
+
     if (queries) {
+        let url = `https://api.themoviedb.org/3/movie/${queries}?api_key=856d768df6af9757eea4022493c242c3`;
         return getMovies(url);
     }
     if (ele) {

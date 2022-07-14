@@ -94,7 +94,6 @@ nav {
 .select-container {
     display: inline-block;
     position: relative;
-
     border: 2px solid rgb(255, 208, 0);
     border-radius: 24px;
     transition: var(--transition);
@@ -340,6 +339,8 @@ nav {
 .selection-container {
     background: var(--clr-black);
     display: flex;
+    justify-content: center;
+
     flex-flow: column;
     padding: 1.5em;
     padding-bottom: 4rem;
@@ -879,7 +880,17 @@ iframe {
     padding: 0.8em;
     margin: 0 auto;
 }
+.select-container .material-symbols-outlined {
+    display: none;
+}
+.loggo {
+    display: none;
+}
+
 @media screen and (max-width: 800px) {
+    .navbar-container {
+        position: relative;
+    }
     .navbar-container .logo p {
         font-size: 20px;
     }
@@ -898,5 +909,62 @@ iframe {
     }
     .mobile-btn .material-symbols-outlined {
         font-size: 34px;
+    }
+    .select-container {
+        position: absolute;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        flex-flow: column;
+        padding: 1.5em;
+        top: 0;
+        left: 0;
+        right: 0;
+        border: none;
+        border-radius: 0;
+        height: 90vh;
+        width: 100%;
+        background-color: #222;
+    }
+    .hide-element {
+        display: none;
+    }
+    .select-container .btn {
+        width: fit-content;
+        text-align: right;
+        font-size: 20px;
+        padding-bottom: 3em;
+    }
+    .select-container .btn:hover {
+        transform: translateX(-10px);
+        transition: var(--transition);
+    }
+    .select-container .btn:focus {
+        background-color: transparent;
+        color: orange;
+        font-weight: 300;
+    }
+    .select-container .material-symbols-outlined {
+        display: block;
+        align-self: start;
+        font-size: 40px;
+        color: violet;
+        cursor: pointer;
+    }
+    .loggo {
+        width: fit-content;
+        display: block;
+    }
+    .logo {
+        display: flex;
+    }
+    .mobile-btn span {
+        cursor: pointer;
+    }
+
+    .mobile-btn span:hover {
+        color: var(--clr-grey-8);
+        transform: scale(1.1);
+        transition: var(--transition);
     }
 }
