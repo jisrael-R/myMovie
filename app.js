@@ -2,7 +2,8 @@ import get from './utils/getElement.js';
 
 // const API_URl_key = `https://api.themoviedb.org/3/discover/movie?api_key=856d768df6af9757eea4022493c242c3`;
 const movieContainer = get('.movies-container');
-
+const mobileMovieContainer = get('.mobile-movies-list');
+const quickInput = get('.mobile-input-search');
 const navBtnCont = get('.select-container');
 const btnFilterC = get('.btn-container');
 
@@ -88,6 +89,7 @@ close
                 }
             })
             .join('') +
+        `<button class='btn fade quick-btn'>quick search</button>` +
         `<div class="logo loggo" style="color:lightGrey; margin: 0 auto; margin-top:1.5em;">
                     <p>myMovies</p>
                     
@@ -167,7 +169,7 @@ async function getMovies(url) {
                     </div>
                 <article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${movie.id}" class="btn-mov">${
                     movie.title
@@ -183,7 +185,7 @@ async function getMovies(url) {
             } else {
                 return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${movie.id}" class="btn-mov">${
                     movie.title
@@ -200,23 +202,36 @@ async function getMovies(url) {
         })
         .join('');
     // console.log(movies);
-    const mobileMovieContainer = get('.mobile-movies-list');
+
     const mobileMovies = data.results
         .map((mobile) => {
             const imagesLink = `${mobile.poster_path}`;
             const movImages = `https://image.tmdb.org/t/p/w500`;
             const placeHolder = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIg60j4m6mAJW12mkD9B8O8j3bw7z6QdyOOA&usqp=CAU`;
 
-            return `<div class="movie-card">
+            if (mobile.poster_path) {
+                return `<div class="movie-card">
                             <div class="imgPoster">
                                 <img src="${movImages}${imagesLink}"
-                                     alt="${mobile.title}" />
+                                     alt="${mobile.title}" loading="lazy" />
                             </div>
                             <div class="card-title">
                                 <h3>${mobile.title}</h3>
                                 <p>${mobile.overview}</p>
                             </div>
                         </div>`;
+            } else {
+                return `<div class="movie-card">
+                            <div class="imgPoster">
+                                <img src="${placeHolder}"
+                                     alt="${mobile.title}" height="180px" loading="lazy" />
+                            </div>
+                            <div class="card-title">
+                                <h3>${mobile.title}</h3>
+                                <p>${mobile.overview}</p>
+                            </div>
+                        </div>`;
+            }
         })
         .join('');
 
@@ -275,15 +290,15 @@ async function getModal(getId) {
     const single = await (await fetch(singleMov)).json();
     const related = await (await fetch(relatedMovies)).json();
     const video = await (await fetch(trailer)).json();
-    console.log(single);
+    const lastVideo = video.results[video.results.length - 1].key;
+    if (!video) {
+        console.log(`sorry no key found`);
+    }
 
-    const newArray = video.results
-        .map((video) => {
-            return `<iframe width="250" height="190" src="https://www.youtube.com/embed/${video.key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        })
-        .join('');
-    console.log(newArray);
-    console.log(single);
+    const demo = `<iframe width="420" height="290" src="https://www.youtube.com/embed/${lastVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+
+    // onYouTubeIframeAPIReady(lastVideo);
+
     const genreContain = get('.genre-list');
     const genreList = single.genres
         .map(({ name }) => {
@@ -291,7 +306,6 @@ async function getModal(getId) {
         })
         .join('');
     // genreContain.innerHTML = genreList;
-    console.log(genreList);
 
     const modalContent = video.results.filter((vid) => {
         // console.log(vid.name === 'Official Trailer');
@@ -305,7 +319,7 @@ async function getModal(getId) {
                
                 <img src="https://image.tmdb.org/t/p/w500${
                     single.poster_path
-                }" width="320px"  alt="">
+                }" width="320px"  alt="" loading="lazy">
 
                 <div class="content-info">
                     <div class="name-title">
@@ -328,8 +342,7 @@ async function getModal(getId) {
                     
                         <h1>related trailers</h1>
                         <div class="video">
-                        ${newArray}
-                        
+                        ${demo}
                          </div>
                     </div
                         
@@ -349,7 +362,7 @@ async function getModal(getId) {
             return `
                  <div class="article">
                    <article>
-                       <img src="https://image.tmdb.org/t/p/w500${mov.poster_path}"  alt="">
+                       <img src="https://image.tmdb.org/t/p/w500${mov.poster_path}"  alt="" loading="lazy">
                        <h5>${mov.title}</h5>
                     </article>
                     </div>
@@ -454,12 +467,27 @@ btnFilterC.addEventListener('click', (e) => {
 
     getMovies(tt);
 });
-
+const goBack = get('.arrowBack');
+const mobileClose = get('.xClose');
+goBack.addEventListener('click', () => {
+    navBtnCont.classList.remove('hide-element');
+});
+mobileClose.addEventListener('click', () => {
+    quickInput.classList.add('hide-element');
+});
 navBtnCont.addEventListener('click', (e) => {
     navBtnCont.classList.toggle('focused');
     const el = e.target;
     const ele = e.target.dataset.value;
     const close = e.target.nodeName === 'SPAN';
+    const qSearch = e.target.className === 'btn fade quick-btn';
+
+    if (qSearch) {
+        quickInput.classList.remove('hide-element');
+        navBtnCont.classList.add('hide-element');
+    } else {
+        quickInput.classList.add('hide-element');
+    }
 
     if (close) {
         navBtnCont.classList.add('hide-element');

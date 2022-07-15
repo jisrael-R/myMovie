@@ -151,7 +151,7 @@ async function genreListDisplay() {
                         if (item.poster_path) {
                             return `<article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -167,7 +167,7 @@ async function genreListDisplay() {
                         } else {
                             return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -190,7 +190,7 @@ async function genreListDisplay() {
                         if (item.poster_path) {
                             return `<article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -206,7 +206,7 @@ async function genreListDisplay() {
                         } else {
                             return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -228,7 +228,7 @@ async function genreListDisplay() {
                         if (item.poster_path) {
                             return `<article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -244,7 +244,7 @@ async function genreListDisplay() {
                         } else {
                             return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -267,7 +267,7 @@ async function genreListDisplay() {
                         if (item.poster_path) {
                             return `<article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -283,7 +283,7 @@ async function genreListDisplay() {
                         } else {
                             return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -306,7 +306,7 @@ async function genreListDisplay() {
                         if (item.poster_path) {
                             return `<article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -322,7 +322,7 @@ async function genreListDisplay() {
                         } else {
                             return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -345,7 +345,7 @@ async function genreListDisplay() {
                         if (item.poster_path) {
                             return `<article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -361,7 +361,7 @@ async function genreListDisplay() {
                         } else {
                             return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -384,7 +384,7 @@ async function genreListDisplay() {
                         if (item.poster_path) {
                             return `<article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -400,7 +400,7 @@ async function genreListDisplay() {
                         } else {
                             return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -423,7 +423,7 @@ async function genreListDisplay() {
                         if (item.poster_path) {
                             return `<article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -439,7 +439,7 @@ async function genreListDisplay() {
                         } else {
                             return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -462,7 +462,7 @@ async function genreListDisplay() {
                         if (item.poster_path) {
                             return `<article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -478,7 +478,7 @@ async function genreListDisplay() {
                         } else {
                             return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -501,7 +501,7 @@ async function genreListDisplay() {
                         if (item.poster_path) {
                             return `<article class="img-post">
                         <img class="img-item"  src="${movImages}${imagesLink}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
@@ -517,7 +517,7 @@ async function genreListDisplay() {
                         } else {
                             return `<article class="img-post">
                         <img class="img-item" style="height:213px;" src="${placeHolder}"
-                            alt="">
+                            alt="" loading="lazy">
                         <div class="btn-title">
                            <button data-id="${item.id}" class="btn-mov">${
                                 item.title
