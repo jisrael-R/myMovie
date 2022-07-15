@@ -6,6 +6,9 @@ const mobileMovieContainer = get('.mobile-movies-list');
 const quickInput = get('.mobile-input-search');
 const navBtnCont = get('.select-container');
 const btnFilterC = get('.btn-container');
+const forms = document.querySelectorAll('.ll');
+const searchInput = get('#searchBox');
+const searchInputDesk = get('#searchBoxDesk');
 
 const selector = [
     'browse_all',
@@ -18,9 +21,6 @@ const things = selector.filter((item) => item.indexOf('browse_all'));
 console.log(things);
 
 const tt = `https://api.themoviedb.org/3/discover/movie?api_key=856d768df6af9757eea4022493c242c3`;
-
-const form = get('.search');
-const searchInput = get('#searchBox');
 
 var tag = document.createElement('script');
 
@@ -377,17 +377,35 @@ async function getModal(getId) {
 }
 // events
 
-form.addEventListener('keyup', async () => {
-    const inputVals = searchInput.value;
-    const url = `https://api.themoviedb.org/3/search/movie?
-api_key=856d768df6af9757eea4022493c242c3&language=en-US&query=${inputVals}&page=1&include_adult=false`;
-    const res = await (await fetch(url)).json();
-    console.log(res);
-    if (inputVals) {
-        getMovies(url);
-    } else if (inputVals === '') {
-        getMovies(tt);
-    }
+// form.addEventListener('keyup', async () => {
+//     const inputVals = searchInput.value;
+//     const url = `https://api.themoviedb.org/3/search/movie?
+// api_key=856d768df6af9757eea4022493c242c3&language=en-US&query=${inputVals}&page=1&include_adult=false`;
+//     const res = await (await fetch(url)).json();
+//     console.log(res);
+//     if (inputVals) {
+//         getMovies(url);
+//     } else if (inputVals === '') {
+//         getMovies(tt);
+//     }
+// });
+
+forms.forEach((form) => {
+    form.addEventListener('keyup', async () => {
+        const inputVals = searchInput.value;
+        const inputDesk = searchInputDesk.value;
+        const url = `https://api.themoviedb.org/3/search/movie?
+api_key=856d768df6af9757eea4022493c242c3&language=en-US&query=${inputVals}${inputDesk}&page=1&include_adult=false`;
+        const res = await (await fetch(url)).json();
+        console.log(res);
+        if (inputVals || inputDesk) {
+            getMovies(url);
+        } else if (inputVals === '' || inputVals === '') {
+            getMovies(tt);
+        }
+
+        console.log(`${inputVals}${inputDesk}`);
+    });
 });
 
 modal.addEventListener('click', (e) => {
@@ -467,14 +485,19 @@ btnFilterC.addEventListener('click', (e) => {
 
     getMovies(tt);
 });
-const goBack = get('.arrowBack');
-const mobileClose = get('.xClose');
-goBack.addEventListener('click', () => {
-    navBtnCont.classList.remove('hide-element');
+
+quickInput.addEventListener('click', (e) => {
+    const close = e.target.dataset.id;
+    const back = e.target.dataset.value;
+    if (close) {
+        quickInput.classList.add('hide-element');
+        quickInput.classList.remove('show-element');
+    }
+    if (back) {
+        navBtnCont.classList.remove('hide-element');
+    }
 });
-mobileClose.addEventListener('click', () => {
-    quickInput.classList.add('hide-element');
-});
+
 navBtnCont.addEventListener('click', (e) => {
     navBtnCont.classList.toggle('focused');
     const el = e.target;
@@ -483,7 +506,7 @@ navBtnCont.addEventListener('click', (e) => {
     const qSearch = e.target.className === 'btn fade quick-btn';
 
     if (qSearch) {
-        quickInput.classList.remove('hide-element');
+        quickInput.classList.add('show-element');
         navBtnCont.classList.add('hide-element');
     } else {
         quickInput.classList.add('hide-element');

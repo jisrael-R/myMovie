@@ -42,31 +42,56 @@
                     </span>
 
                 </div>
-                <div class="mobile-input-search hide-element">
+                <div class="desktop-search ll">
+
+                    <div class="zoom">
+                        <span class="icon-search material-symbols-outlined">search
+                        </span>
+                    </div>
+                    <input id="searchBoxDesk" type="text" class=" searchBox" name="search" placeholder="Search:">
+
+                    <span class="material-symbols-outlined btn-cancel">
+                        cancel
+                    </span>
+                </div>
+
+                <div class="mobile-input-search">
                     <div class="controllers">
                         <div class="arrowBack btn-controller">
-                            <span class="back material-symbols-outlined">
-                                arrow_back
+                            <span data-value="3" class="back material-symbols-outlined">
+                                arrow_back_ios
                             </span>
-                            <p>go back</p>
+                            <!-- <p>go back</p> -->
                         </div>
                         <div class="xClose btn-controller">
-                            <span class="pclose material-symbols-outlined">
+                            <span data-id="1" class="pclose material-symbols-outlined">
                                 close
                             </span>
-                            <p>close</p>
+                            <!-- <p>close</p> -->
                         </div>
 
                     </div>
+                    <div class="logo">
+                        <p>myMovies</p>
+                        <div class="dot-logo">
+                            <div class="r-logo red"></div>
+                            <div class="r-logo orange"></div>
+                            <div class="r-logo yellow"></div>
+                            <div class="r-logo violet"></div>
+                            <div class="r-logo blue"></div>
+                            <div class="r-logo green"></div>
+                        </div>
+                    </div>
 
 
-                    <div class="search">
+                    <div class="search ll">
 
                         <div class="zoom">
                             <span class="icon-search material-symbols-outlined">search
                             </span>
                         </div>
-                        <input id="searchBox" type="text" class="fontAwesome" name="search" placeholder="Search:">
+                        <input id="searchBox" type="text" class="fontAwesome searchBox" name="search"
+                            placeholder="Search:">
 
                         <span class="material-symbols-outlined btn-cancel">
                             cancel

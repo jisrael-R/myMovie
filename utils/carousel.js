@@ -33,15 +33,19 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = 'block';
     dots[slideIndex - 1].className += ' active';
 }
+const one = document.getElementById('searchBoxDesk');
+const two = document.getElementById('searchBox');
 
-const genreArr = ['drama', 'action', 'sci-fi', 'anime', 'history'];
-let i = 0;
-setInterval(function () {
-    document
-        .getElementById('searchBox')
-        .setAttribute('placeholder', `Search: "${genreArr[i++]}"`);
+function animate(item) {
+    const genreArr = ['drama', 'action', 'sci-fi', 'anime', 'history'];
+    let i = 0;
+    setInterval(function () {
+        item.setAttribute('placeholder', `Search: "${genreArr[i++]}"`);
 
-    if (i == genreArr.length) i = 0;
-}, 3000);
+        if (i == genreArr.length) i = 0;
+    }, 3000);
+}
+animate(one);
+animate(two);
 
 // end of func
