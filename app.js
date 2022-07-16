@@ -295,7 +295,7 @@ async function getModal(getId) {
         console.log(`sorry no key found`);
     }
 
-    const demo = `<iframe width="420" height="290" src="https://www.youtube.com/embed/${lastVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+    const demo = `<iframe  src="https://www.youtube.com/embed/${lastVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
 
     // onYouTubeIframeAPIReady(lastVideo);
 
@@ -319,7 +319,7 @@ async function getModal(getId) {
                
                 <img src="https://image.tmdb.org/t/p/w500${
                     single.poster_path
-                }" width="320px"  alt="" loading="lazy">
+                }" width="200px"  alt="" loading="lazy">
 
                 <div class="content-info">
                     <div class="name-title">
@@ -338,14 +338,17 @@ async function getModal(getId) {
                         </div>
                    
                     <div class="overview-content">
+                        <h2>Overview</h2>
                         <p>${single.overview}</p>
                     
-                        <h1>related trailers</h1>
-                        <div class="video">
-                        ${demo}
-                         </div>
+                        
                     </div
                         
+                         
+                     <div class="videoo">
+                      <h2>trailer</h2>
+                        <iframe  src="https://www.youtube.com/embed/${lastVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
                     </div>
                 </div>
             
