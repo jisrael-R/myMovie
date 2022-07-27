@@ -542,6 +542,7 @@ navBtnCont.addEventListener('click', (e) => {
             const title = get('.title-control');
             title.textContent = queries.split('_').join(' ');
             element.classList.add('hide');
+            movieContainer.classList.add('shiftContainer');
         });
         return getMovies(url);
     }
@@ -551,6 +552,7 @@ navBtnCont.addEventListener('click', (e) => {
             const title = get('.title-control');
             title.textContent = 'Top Picks';
             element.classList.remove('hide');
+            movieContainer.classList.remove('shiftContainer');
         });
         navBtnCont.classList.add('hide-element');
         return getMovies(ele);
