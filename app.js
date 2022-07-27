@@ -171,25 +171,25 @@ async function getMovies(url) {
             const placeHolder = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIg60j4m6mAJW12mkD9B8O8j3bw7z6QdyOOA&usqp=CAU`;
 
             if (mobile.poster_path) {
-                return `<div class="movie-card">
+                return `<div class="movie-card" data-id="${mobile.id}">
                             <div class="imgPoster">
                                 <img src="${movImages}${imagesLink}"
-                                     alt="${mobile.title}" loading="lazy" />
+                                     alt="${mobile.title}" loading="lazy" data-id="${mobile.id}"/>
                             </div>
                             <div class="card-title">
-                                <h3>${mobile.title}</h3>
-                                <p>${mobile.overview}</p>
+                                <h3 data-id="${mobile.id}">${mobile.title}</h3>
+                                <p data-id="${mobile.id}">${mobile.overview}</p>
                             </div>
                         </div>`;
             } else {
-                return `<div class="movie-card">
+                return `<div class="movie-card" data-id="${mobile.id}">
                             <div class="imgPoster">
                                 <img src="${placeHolder}"
-                                     alt="${mobile.title}" height="180px" loading="lazy" />
+                                     alt="${mobile.title}" height="180px" loading="lazy" data-id="${mobile.id}"/>
                             </div>
                             <div class="card-title">
-                                <h3>${mobile.title}</h3>
-                                <p>${mobile.overview}</p>
+                                <h3 data-id="${mobile.id}">${mobile.title}</h3>
+                                <p data-id="${mobile.id}">${mobile.overview}</p>
                             </div>
                         </div>`;
             }
@@ -402,6 +402,13 @@ async function getModal(getId) {
     }
 }
 // events
+const mobileMovList = get('.mobile-movies-list');
+mobileMovList.addEventListener('click', function (e) {
+    const movies = e.target.dataset.id;
+    console.log(movies);
+    modalCont.classList.add('open');
+    getModal(movies);
+});
 
 forms.forEach((form) => {
     form.addEventListener('keyup', async () => {
@@ -416,8 +423,6 @@ api_key=856d768df6af9757eea4022493c242c3&language=en-US&query=${inputVals}${inpu
         } else if (inputVals === '' || inputVals === '') {
             getMovies(tt);
         }
-
-        console.log(`${inputVals}${inputDesk}`);
     });
 });
 
