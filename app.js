@@ -1,6 +1,5 @@
 import get from './utils/getElement.js';
 
-// const API_URl_key = `https://api.themoviedb.org/3/discover/movie?api_key=856d768df6af9757eea4022493c242c3`;
 const movieContainer = get('.movies-container');
 const mobileMovieContainer = get('.mobile-movies-list');
 const quickInput = get('.mobile-input-search');
@@ -9,6 +8,7 @@ const btnFilterC = get('.btn-container');
 const forms = document.querySelectorAll('.ll');
 const searchInput = get('#searchBox');
 const searchInputDesk = get('#searchBoxDesk');
+const placeHolder = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIg60j4m6mAJW12mkD9B8O8j3bw7z6QdyOOA&usqp=CAU`;
 
 const selector = [
     'browse_all',
@@ -112,45 +112,6 @@ closeBtn.addEventListener('click', () => {
 // const allMovies = get('.container-two');
 
 // genre filter btns
-async function genreBtns() {
-    const genres = `https://api.themoviedb.org/3/genre/movie/list?api_key=856d768df6af9757eea4022493c242c3`;
-    const res = await (await fetch(genres)).json();
-
-    const genreBtn = [
-        ...res.genres.map(({ id, name }) => {
-            let tt = `https://api.themoviedb.org/3/discover/movie?api_key=856d768df6af9757eea4022493c242c3&with_genres=${id}`;
-            // return `<button class='fade' data-id="${id}">${name}</button>`;
-            const container = `<div class="all-genres-movies">
-                            <h1 style="color: white;">${name}</h1>
-                            <div class="genre-movie-container">
-                            
-                          </div>`;
-
-            axios.get(`${tt}`).then((res) => {
-                const urls = res.config.url;
-                axios
-                    .get(urls)
-                    .then((data) => {
-                        // console.log(data.data.results);
-
-                        return data.data.results;
-                    })
-                    .then((Response) => {
-                        const li = Response.map((item) => {
-                            console.log(item);
-                            return `<h1 style="color: white;">${item}</h1>`;
-                        });
-                        // allMovies.innerHTML = li;
-                    });
-            });
-        }),
-    ].join(' ');
-    // btnFilterC.innerHTML = genreBtn;
-    // allMovies.innerHTML = genreBtn;
-
-    // getMovies(genreBtn);
-}
-// genreBtns();
 
 async function getMovies(url) {
     const res = await fetch(url);
@@ -278,48 +239,35 @@ const modal = get('.movie-info-container');
 const relatedMovs = get('.related-movie-container');
 
 async function getModal(getId) {
-    const API = `https://api.themoviedb.org/3/movie/`;
-    const KEY = `api_key=856d768df6af9757eea4022493c242c3`;
-    const singleMov = `${API}${getId}?${KEY}&append_to_response=videos`;
+    try {
+        const API = `https://api.themoviedb.org/3/movie/`;
+        const KEY = `api_key=856d768df6af9757eea4022493c242c3`;
+        const singleMov = `${API}${getId}?${KEY}&append_to_response=videos`;
 
-    const trailer = `${API}${getId}/videos?${KEY}`;
+        const trailer = `${API}${getId}/videos?${KEY}`;
 
-    const reviews = `${API}${getId}/reviews?${KEY}`;
-    const relatedMovies = `${API}${getId}/similar?${KEY}`;
+        const reviews = `${API}${getId}/reviews?${KEY}`;
+        const relatedMovies = `${API}${getId}/similar?${KEY}`;
 
-    const single = await (await fetch(singleMov)).json();
-    const related = await (await fetch(relatedMovies)).json();
-    const video = await (await fetch(trailer)).json();
-    const lastVideo = video.results[video.results.length - 1].key;
-    if (!video) {
-        console.log(`sorry no key found`);
-    }
+        const single = await (await fetch(singleMov)).json();
+        const related = await (await fetch(relatedMovies)).json();
+        const video = await (await fetch(trailer)).json();
+        const lastVideo = video.results[video.results.length - 1].key;
+        const { vote_average } = single;
+        const formattedVal = Math.ceil(vote_average);
 
-    const demo = `<iframe  src="https://www.youtube.com/embed/${lastVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
+        const genreList = single.genres
+            .map(({ name }) => {
+                return `<ul><li>${name}</li></ul>`;
+            })
+            .join('');
+        // genreContain.innerHTML = genreList;
 
-    // onYouTubeIframeAPIReady(lastVideo);
-
-    const genreContain = get('.genre-list');
-    const genreList = single.genres
-        .map(({ name }) => {
-            return `<ul><li>${name}</li></ul>`;
-        })
-        .join('');
-    // genreContain.innerHTML = genreList;
-
-    const modalContent = video.results.filter((vid) => {
-        // console.log(vid.name === 'Official Trailer');
-
-        if (vid.site.includes('YouTube')) {
-            return vid;
-        }
-    });
-
-    const modalInfo = `  <div class="overview-container">
+        const modalInfo = `  <div class="overview-container">
                
                 <img src="https://image.tmdb.org/t/p/w500${
                     single.poster_path
-                }" width="200px"  alt="" loading="lazy">
+                }" width="300px"  alt="" loading="lazy">
 
                 <div class="content-info">
                     <div class="name-title">
@@ -332,7 +280,7 @@ async function getModal(getId) {
                     <div class="sideInfo">
                       <div class="genreList">${genreList}</div>
                         <div class="movie-votes">
-                          <p>${single.vote_average}</p>
+                          <p>${formattedVal}%</p>
                             <small>voted</small>
                         </div>
                         </div>
@@ -346,7 +294,7 @@ async function getModal(getId) {
                         
                          
                      <div class="videoo">
-                      <h2>trailer</h2>
+                      <h2 class="video-title">trailer</h2>
                         <iframe  src="https://www.youtube.com/embed/${lastVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                     </div>
@@ -360,9 +308,9 @@ async function getModal(getId) {
            
              `;
 
-    const movsRelated = related.results
-        .map((mov) => {
-            return `
+        const movsRelated = related.results
+            .map((mov) => {
+                return `
                  <div class="article">
                    <article>
                        <img src="https://image.tmdb.org/t/p/w500${mov.poster_path}"  alt="" loading="lazy">
@@ -370,28 +318,90 @@ async function getModal(getId) {
                     </article>
                     </div>
                     `;
-        })
-        .join('');
-    const movReviews = reviews.results;
+            })
+            .join('');
 
-    modal.innerHTML = modalInfo;
+        const movReviews = reviews.results;
 
-    relatedMovs.innerHTML = movsRelated;
+        modal.innerHTML = modalInfo;
+
+        relatedMovs.innerHTML = movsRelated;
+    } catch (error) {
+        const API = `https://api.themoviedb.org/3/movie/`;
+        const KEY = `api_key=856d768df6af9757eea4022493c242c3`;
+        const singleMov = `${API}${getId}?${KEY}&append_to_response=videos`;
+        const relatedMovies = `${API}${getId}/similar?${KEY}`;
+        const single = await (await fetch(singleMov)).json();
+        const related = await (await fetch(relatedMovies)).json();
+        console.log(single);
+        const movsRelated = related.results
+            .map((mov) => {
+                return `
+                 <div class="article">
+                   <article>
+                       <img src="https://image.tmdb.org/t/p/w500${mov.poster_path}"  alt="" loading="lazy">
+                       <h5>${mov.title}</h5>
+                    </article>
+                    </div>
+                    `;
+            })
+            .join('');
+        relatedMovs.innerHTML = movsRelated;
+        const genreList = single.genres
+            .map(({ name }) => {
+                return `<ul><li>${name}</li></ul>`;
+            })
+            .join('');
+
+        modal.innerHTML = ` <div class="overview-container">
+               
+                <img src="https://image.tmdb.org/t/p/w500${
+                    single.poster_path
+                }" width="300px"  alt="" loading="lazy">
+
+                <div class="content-info">
+                    <div class="name-title">
+                        <h2>${single.title}</h2>
+                        <span>(${moment(single.release_date).format(
+                            'YYYY'
+                        )})</span>
+
+                    </div>
+                    <div class="sideInfo">
+                     <div class="genreList">${genreList}</div>
+                        <div class="movie-votes">
+                          <p>${single.vote_average}</p>
+                            <small>voted</small>
+                        </div>
+                        </div>
+                   
+                    <div class="overview-content">
+                        <h2>Overview</h2>
+                        <p>${single.overview}</p>
+                    
+                        
+                    </div
+                        
+                    <div class="videoo">
+                      <h2 class="video-title">trailer</h2>
+                       <p>Sorry, No Trailer Found At This Time :/</p>
+                        <div class="imgPoster">
+                                <img src="${placeHolder}"
+                                     alt="placeholder" height="180px" loading="lazy" />
+                    </div>
+                         
+        
+                    </div>
+                </div>
+            
+                <button class="close-btn btn2">
+                <i class="fas fa-times"></i>
+            </button>    
+            </div>
+`;
+    }
 }
 // events
-
-// form.addEventListener('keyup', async () => {
-//     const inputVals = searchInput.value;
-//     const url = `https://api.themoviedb.org/3/search/movie?
-// api_key=856d768df6af9757eea4022493c242c3&language=en-US&query=${inputVals}&page=1&include_adult=false`;
-//     const res = await (await fetch(url)).json();
-//     console.log(res);
-//     if (inputVals) {
-//         getMovies(url);
-//     } else if (inputVals === '') {
-//         getMovies(tt);
-//     }
-// });
 
 forms.forEach((form) => {
     form.addEventListener('keyup', async () => {
@@ -464,7 +474,6 @@ modalCont.addEventListener('click', (e) => {
     const close = e.target.classList.contains('fa-times');
     const relatedMovBtn = e.target.classList.contains('btn-related-movies');
 
-    // onYouTubeIframeAPIReady(e.target.data.id);
     // to close modal
     if (close) {
         modal.innerHTML = `<div class="overview-container notFound">
@@ -522,17 +531,21 @@ navBtnCont.addEventListener('click', (e) => {
     const queries = el.dataset.id;
 
     if (queries) {
-        let url = `https://api.themoviedb.org/3/movie/${queries}?api_key=856d768df6af9757eea4022493c242c3`;
+        let url = `https://api.themoviedb.org/3/movie/${queries}?api_key=856d768df6af9757eea4022493c242c3&page=2`;
         navBtnCont.classList.add('hide-element');
         AllContainers.forEach((element) => {
-            element.classList.add('hide-element');
+            const title = get('.title-control');
+            title.textContent = queries.split('_').join(' ');
+            element.classList.add('hide');
         });
         return getMovies(url);
     }
     if (ele) {
         // filterContainer.classList.remove('hide');
         AllContainers.forEach((element) => {
-            element.classList.remove('hide-element');
+            const title = get('.title-control');
+            title.textContent = 'Top Picks';
+            element.classList.remove('hide');
         });
         navBtnCont.classList.add('hide-element');
         return getMovies(ele);
